@@ -1,0 +1,14 @@
+{% extends "Area1/base.html"%}
+{% block content %}
+	{% for s in stuff %}
+	
+		<h5>Development Status: {{s.Development_status}}</h5>
+		<h5>Developer: {{s.Developer}}</h5>
+		<h6>Last Edited On: {{s.Last_Edited_on}}</h6>	
+		
+	{% endfor %}
+{% endblock content %}
+
+
+
+		

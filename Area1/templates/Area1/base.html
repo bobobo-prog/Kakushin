@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Homepage </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+  {% if title %}
+    <title>{{title}}</title>
+  {% else %}
+    <title> TBA </title>
+  {% endif %}
+
+  <style type="text/css">
+    body
+    {
+      background-color: #151313;
+    }
+
+    .maindiv
+    {
+
+      float:left;
+      padding-left: 5%;
+      width: 60%;
+      background-color: lightgrey;
+      font-family:monospace;
+      font-size: 120%; 
+
+    }
+
+    .semidiv
+    {
+      float:right;
+      padding-right: 5%;
+      width: 35%;
+      background-color: lightblue;
+      font-family:monospace;
+      font-size: 120%; 
+
+    }
+    .media
+    {
+      width: 120px;
+      height: 50px%;
+      background-color: lightgreen;
+
+    }
+
+    .media img
+    {
+      height: 100%;
+      width: 100%;
+
+    }
+
+
+  </style>
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand"><i>TBA</i></a>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="{% url 'Area1-home' %}">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'Area1-about' %}">About Us</a></li>
+      {% if user.is_authenticated %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'Area1-prof-list' %}">Prof-List</a></li>
+      {% endif %}  
+
+    </ul>
+    <div class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+        <a class = "nav-item nav-link" href="{% url 'Users-profile' %}">Profile</a>
+        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+        <a class="nav-item nav-link" href="{% url 'Users-register' %}">Register</a>
+      {% endif %}
+    </div>
+</nav>
+ <div>
+   <p>
+      
+   </p>
+ </div>
+<div class="container-fluid">
+  {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">
+                <b>{{message}}</b>
+        </div>
+    {% endfor %}
+  {% endif %}
+</div>
+<div class="maindiv" align="center">
+  
+ {% block content %}{% endblock %} 
+
+</div>
+
+<div class="semidiv">
+  <p>Stuff to be added</p>
+
+</div>
+  
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'Area1/base.html' %}
+{% block content%}
+{% load crispy_forms_tags %}
+
+<div class="container" style="background-color: lightgrey">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-2" align="left">
+	<form method="POST">
+		{% csrf_token %}
+		<legend>Sign In!</legend>
+		{{form|crispy}}
+		<div>
+			<button class="btn btn-info">Sign in</button>	
+		</div>
+		<div>
+			<small class="text-muted">
+				Need an Account ? <a href="{% url 'Users-register' %}">Register</a>
+			</small>
+	
+		</div>	
+		
+	</form>
+</div>
+</div>
+
+</div>
+
+
+
+
+{% endblock content %}

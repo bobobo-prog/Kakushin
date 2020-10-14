@@ -1,0 +1,29 @@
+{% extends 'Area1/base.html' %}
+{% block content%}
+{% load crispy_forms_tags %}
+
+<div class="container" style="background-color: lightgrey">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-2" align="left">
+	<form method="POST">
+		{% csrf_token %}
+		<legend>You've been successfully Logged out !</legend>
+		{{form|crispy}}
+		<div>
+			<small class="text-muted">
+				 To Continue 
+				<a href="{% url 'logout' %}">Sign In</a>
+			</small>
+	
+		</div>	
+		
+	</form>
+</div>
+</div>
+
+</div>
+
+
+
+
+{% endblock content %}

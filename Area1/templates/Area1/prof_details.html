@@ -1,0 +1,25 @@
+{% extends "Area1/prof_base.html" %}
+{% block content %}
+	<div class="container">
+		<div class="card">
+			<div class="card-body" id="detailsbg">
+			<div class="row">
+				<img src="{{data.image}}" class="img-fluid">
+				<div class="col-md-4">
+					<h3>
+						{{data.name}}
+					</h3>	
+				</div>	
+				<div class="col-md-8">
+					<br>
+					<h5>
+						{{data.qualifications}}
+					</h5>
+				</div>
+			</div>
+				
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
