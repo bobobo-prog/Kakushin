@@ -11,7 +11,6 @@ class Profile(models.Model):
 	def __str__(self):
 		return f'{self.user.username} Profile'
 
-
 	# def save(self):
 	# 	super().save()
 
@@ -22,4 +21,26 @@ class Profile(models.Model):
 
 	# 		r_img.thumbnail(otp_size)
 	# 		r_img.save(self.image.path)
+
+
+
+
+class Document(models.Model):
+	
+	def uppath(self,filename):
+		return 'documents/uploads/'+str(self.user.username)+'/'+filename
+
+	user = models.ForeignKey(User,on_delete=models.CASCADE)
+	docfile = models.FileField(upload_to=uppath)
+	#uploaded_at = models.DateTimeField(auto_now_add=True)
+	
+
+
+	def __str__(self):
+		return f'{self.user.username}'
+	
+	
+
+
+
 

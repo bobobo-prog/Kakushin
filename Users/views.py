@@ -1,7 +1,11 @@
+from Users.models import Document
 from django.shortcuts import render,redirect
-from .forms import UserRegisterForm,UserUpdateForm,ProfileUpdateForm
+from .forms import UserRegisterForm,UserUpdateForm,ProfileUpdateForm,UploadForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.core.files.storage import FileSystemStorage
+
 
 def register(request):
 	if (request.method=="POST"):
@@ -35,3 +39,30 @@ def profile(request):
 	context = {'u_form':u_form,
 				'p_form':p_form}
 	return render(request,'Users/profile.html',context)
+
+@login_required
+def show_list(request):
+	
+	form = UploadForm(request.POST,request.FILES)
+
+	documents = Document.objects.filter(user = request.user)
+
+
+	context = {'documents':documents,'form':form}
+	return render(request,'Users/List.html',context)
+
+
+@login_required
+def prof_upload(request):
+	if request.method == 'POST':
+		form = UploadForm(request.POST,request.FILES)
+		if form.is_valid():
+			form.save()
+	else:
+		form = UploadForm()
+
+	return render(request,'Users/upload.html',{'form':form})
+
+
+
+

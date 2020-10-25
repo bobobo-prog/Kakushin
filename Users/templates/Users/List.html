@@ -1,0 +1,19 @@
+
+
+{% extends 'Area1/base.html' %}
+
+
+{% block content %}
+
+<table cellpadding=20>
+    {% for document in documents %}
+        <tr>
+            <td><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a> </td>
+            <td></td>
+            <td></td>
+
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock content %}
